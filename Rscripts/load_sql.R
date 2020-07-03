@@ -58,6 +58,7 @@ for (i in 1:length(sql.path)) {
   meta$Metadata_Plate <- plate.list[i]
   names(meta)[names(meta) == 'Metadata_well_position'] <- 'Metadata_Well'
   meta$Metadata_broad_sample <- as.character(meta$Metadata_broad_sample)
+  meta$Metadata_Well <- as.character(meta$Metadata_Well)
   meta$Metadata_broad_sample[which(meta$Metadata_broad_sample == "")] <- "DMSO"
   
   dmso_wells <- meta %>% 
@@ -79,7 +80,7 @@ for (i in 1:length(sql.path)) {
   
   
   
-  dmso <- merge(sql_data, meta, by = c("Image_Metadata_Well", "Metadata_Well"))
+  dmso <- merge(sql_data, meta, by.x="Image_Metadata_Well", by.y="Metadata_Well", all.x = TRUE)
   
   
   print("Step5") 
