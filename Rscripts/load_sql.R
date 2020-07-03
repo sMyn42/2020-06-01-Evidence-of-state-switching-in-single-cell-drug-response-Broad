@@ -79,13 +79,13 @@ for (i in 1:length(sql.path)) {
   
   
   
-  dmso <- merge(tmp, meta, by = c("Image_Metadata_Well", "Metadata_Well"))
+  dmso <- merge(sql_data, meta, by = c("Image_Metadata_Well", "Metadata_Well"))
   
   
   print("Step5") 
   
   
   
-  readr::write_csv(sql_data, paste0(output,plate.list[i], "/", plate.list[i], "_dmso", ".csv"))
+  readr::write_csv(dmso, paste0(output,plate.list[i], "/", plate.list[i], "_dmso", ".csv"))
   print("Successfully executed") 
 }
